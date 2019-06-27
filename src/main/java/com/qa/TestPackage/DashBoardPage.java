@@ -10,64 +10,52 @@ import org.openqa.selenium.support.PageFactory;
 
 import com.qa.BaseClass.BaseClass;
 
-public class DashBoardPage extends BaseClass
-{
+public class DashBoardPage extends BaseClass {
 
-	@FindBy(xpath="//input[@id='twotabsearchtextbox']")
+	@FindBy(xpath = "//input[@id='twotabsearchtextbox']")
 	WebElement Search;
 
-	@FindBy(xpath="//div[@id='resultsCol']")
+	@FindBy(xpath = "//div[@id='resultsCol']")
 	List<WebElement> FootwearSearchResult;
-	
-	@FindBy(xpath="//a[@class='nav-imageHref']")
-	WebElement ContactUs;
-	
 
-	
-	public DashBoardPage()
-	{
+	@FindBy(xpath = "//a[@class='nav-imageHref']")
+	WebElement ContactUs;
+
+	public DashBoardPage() {
 		PageFactory.initElements(driver, this);
 
 	}
 
-	public void FootwearSearch()
-	{
+	public void FootwearSearch() {
 		Search.sendKeys("footwear");
 		Search.sendKeys(Keys.ENTER);
 		List<WebElement> footwearList = FootwearSearchResult;
 
-		for (WebElement result:footwearList)
-		{
+		for (WebElement result : footwearList) {
 			System.out.println("Result of Footwear Search is========");
-			logger.info(result.getText());     
+			logger.info(result.getText());
 			System.out.println("=====================");
 
 		}
 
 	}
 
-	public void ClickonContactUS()
-	{
-		
+	public void ClickonContactUS() {
+
 		ContactUs.click();
 		JavascriptExecutor js = (JavascriptExecutor) driver;
-		 js.executeScript("window.scrollBy(0,50)");
-				
-	}
-	
-	public String ContactUsTittleValidation()
-	{
-		return driver.getTitle(); 
-			
-	}
-	
-	public CustomerHelpPage CustomerHelpPage()
-	{
-		return new CustomerHelpPage();
-		
-	}
-	
-	
+		js.executeScript("window.scrollBy(0,50)");
 
+	}
+
+	public String ContactUsTittleValidation() {
+		return driver.getTitle();
+
+	}
+
+	public CustomerHelpPage CustomerHelpPage() {
+		return new CustomerHelpPage();
+
+	}
 
 }
